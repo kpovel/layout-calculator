@@ -9,6 +9,9 @@
 .button {
   font-family: "Work Sans", sans-serif;
   font-size: 32px;
+  margin: 8px;
+  border: 0;
+  border-radius: 24px;
   line-height: 96px;
   text-align: right;
   color: white;
@@ -16,9 +19,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 8px;
-  border: 0;
-  border-radius: 24px;
 }
 
 .scoreBoard {
@@ -31,12 +31,9 @@
 }
 
 .bottoms {
-  position: relative;
-  left: 12px;
-}
-
-.first_row, .second_row, .third_row, .fourth_row, .fifth_row {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .standard_button {
