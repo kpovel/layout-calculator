@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap');
+
+.calculator {
+    width: 364px;
+    height: 582px;
+    background-color: #17171C;
+    margin: 0 auto;
+}
+
+.button {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 32px;
+    margin: 8px;
+    border: 0;
+    border-radius: 24px;
+    line-height: 96px;
+    text-align: right;
+    color: rgb(255, 255, 255);
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreBoard {
+    display: block;
+    font-size: 96px;
+    font-weight: 300;
+    margin: 20px;
+    position: relative;
+    top: 20px;
+    overflow: auto;
+    text-align: right;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.standard_button {
+    height: 72px;
+    width: 69px;
+    background: rgb(46, 47, 56);
+}
+
+.double_button {
+    height: 72px;
+    width: 153.33px;
+    background: rgb(78, 80, 95);
+}
+
+.triple_button {
+    height: 72px;
+    width: 238.33px;
+    background: rgb(46, 47, 56);
+}
+
+.blue_button {
+    background: rgb(75, 94, 252);
+}
+
+#backspace {
+    font-size: 24px;
+}
