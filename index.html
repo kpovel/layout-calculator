@@ -7,28 +7,28 @@
 </head>
 <body>
 <div class="calculator">
-    <div class="scoreBoard button">1,258.2</div>
+    <div id="scoreBoard" class="scoreBoard button">0</div>
 
-    <div class="bottoms">
-            <button class="double_button button">C</button>
-            <button class="standard_button button" id="backspace">&#9003;</button>
-            <button class="standard_button blue_button button">÷</button>
-            <button class="standard_button button">7</button>
-            <button class="standard_button button">8</button>
-            <button class="standard_button button">9</button>
-            <button class="standard_button blue_button button">×</button>
-            <button class="standard_button button">4</button>
-            <button class="standard_button button">5</button>
-            <button class="standard_button button">6</button>
-            <button class="standard_button blue_button button">–</button>
-            <button class="standard_button button">1</button>
-            <button class="standard_button button">2</button>
-            <button class="standard_button button">3</button>
-            <button class="standard_button blue_button button">+</button>
-            <button class="triple_button button">0</button>
-            <button class="standard_button blue_button button">=</button>
+    <div class="buttons">
+        <button id="C" class="double_button button">C</button>
+        <button id="backspace" class="standard_button button">&#9003;</button>
+        <button id="div" class="standard_button blue_button button action">÷</button>
+        <button id="seven" class="standard_button button inputScore">7</button>
+        <button id="eight" class="standard_button button inputScore">8</button>
+        <button class="standard_button button inputScore">9</button>
+        <button id="mult" class="standard_button blue_button button action">×</button>
+        <button class="standard_button button inputScore">4</button>
+        <button class="standard_button button inputScore">5</button>
+        <button class="standard_button button inputScore">6</button>
+        <button id="sub" class="standard_button blue_button button action">–</button>
+        <button class="standard_button button inputScore">1</button>
+        <button class="standard_button button inputScore">2</button>
+        <button class="standard_button button inputScore">3</button>
+        <button id="sum" class="standard_button blue_button button action">+</button>
+        <button class="triple_button button inputScore">0</button>
+        <button id="result" class="standard_button blue_button button">=</button>
     </div>
-
+    <script src="main.js"></script>
 </div>
 </body>
 </html>

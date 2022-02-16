@@ -22,15 +22,17 @@
 }
 
 .scoreBoard {
+  display: block;
   font-size: 96px;
   font-weight: 300;
   margin: 20px;
   position: relative;
   top: 20px;
-  left: 15px;
+  overflow: auto;
+  text-align: right;
 }
 
-.bottoms {
+.buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
