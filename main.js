@@ -1,67 +1,72 @@
 const numbersButton = document.querySelectorAll('.inputScore')
-const scoreBoard = document.getElementById('scoreBoard')
 const mathActions = document.querySelectorAll('button.action')
+let mathAction
 
-for (let buttonsElement of numbersButton) {
-    buttonsElement.addEventListener('click', numberEntry)
-}
-
-function numberEntry() {
-    const text = scoreBoard.textContent
-    if (text[0] === '0' && text.length === 1) {
-        scoreBoard.textContent = null
-    }
-    scoreBoard.textContent += this.textContent
-}
-
-
-C.addEventListener('click', () => scoreBoard.textContent = '0')
-
-backspace.addEventListener('click', backspaceScore)
-
-function backspaceScore() {
-    const lengthScore = scoreBoard.textContent.length
-
-    if (lengthScore === 1) {
-        scoreBoard.textContent = '0'
-    } else {
-        scoreBoard.textContent = scoreBoard.textContent.slice(0, lengthScore - 1)
-    }
+for (let numbers of numbersButton) {
+    numbers.addEventListener('click', numberEntry)
 }
 
 for (let mathActionElement of mathActions) {
-    mathActionElement.addEventListener('click', action)
+    mathActionElement.addEventListener('click', mathematicAction)
 }
 
-result.addEventListener('click', actionResult)
+backspace.addEventListener('click', backspaceScore)
 
-let mathAction
+result.addEventListener('click', getResult)
 
-function action() {
+reset.addEventListener('click', resetScore)
+
+
+function numberEntry() {
+    const text = scoreboard.textContent
+    if (text[0] === '0' && text.length === 1) {
+        scoreboard.textContent = null
+    }
+    scoreboard.textContent += this.textContent
+}
+
+
+function mathematicAction() {
     mathAction = this.textContent
-    scoreBoard.textContent += mathAction
+    scoreboard.textContent += mathAction
 }
 
 
-function actionResult() {
-    const str = scoreBoard.textContent
+function backspaceScore() {
+    const lengthScore = scoreboard.textContent.length
+
+    if (lengthScore === 1) {
+        scoreboard.textContent = '0'
+    } else {
+        scoreboard.textContent = scoreboard.textContent.slice(0, lengthScore - 1)
+    }
+}
+
+function resetScore() {
+    scoreboard.textContent = '0'
+}
+
+
+function getResult() {
+    const str = scoreboard.textContent
     let splitStr = str.split(mathAction)
-    if (!mathAction) {
-        scoreBoard.textContent = 'Error'
+    if (mathAction && splitStr[1] === '') {
+        // scoreboard.textContent = 'Error'
+        scoreboard.textContent = splitStr[0]
     }
     //todo: checking for the presence of operands
     switch (mathAction) {
         case '+':
-            scoreBoard.textContent = +splitStr[0] + +splitStr[1];
+            scoreboard.textContent = +splitStr[0] + +splitStr[1];
             break;
         case '–':
-            scoreBoard.textContent = +splitStr[0] - +splitStr[1];
+            scoreboard.textContent = +splitStr[0] - +splitStr[1];
             break;
         case '×':
-            scoreBoard.textContent = +splitStr[0] * +splitStr[1];
+            scoreboard.textContent = +splitStr[0] * +splitStr[1];
             break;
         case '÷':
-            scoreBoard.textContent = +splitStr[0] / +splitStr[1];
+            scoreboard.textContent = +splitStr[0] / +splitStr[1];
             break;
     }
 }
