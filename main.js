@@ -19,17 +19,18 @@ reset.addEventListener('click', resetScore)
 
 function numberEntry() {
     const text = scoreboard.textContent
-    console.log(text[0])
     if (text[0] === '0' && text.length === 1) {
+        scoreboard.textContent = null
+    }else if (firstOperand){
         scoreboard.textContent = null
     }
     scoreboard.textContent += this.textContent
 }
 
-
+let firstOperand
 function mathematicAction() {
+    firstOperand = scoreboard.textContent
     mathAction = this.textContent
-    scoreboard.textContent += mathAction
 }
 
 
@@ -49,27 +50,20 @@ function resetScore() {
 
 
 function getResult() {
-    const str = scoreboard.textContent
-    let splitStr = str.split(mathAction)
-    if (splitStr[1] === '') {
-        scoreboard.textContent = splitStr[0]
-    }else if (scoreboard.textContent === 'Infinity'){
-        return
-    }
-    console.log(splitStr)
-    //todo: checking for the presence of operands
+    let secondOperand = scoreboard.textContent
+
     switch (mathAction) {
         case '+':
-            scoreboard.textContent = +splitStr[0] + +splitStr[1];
+            scoreboard.textContent = +firstOperand + +secondOperand;
             break;
         case '–':
-            scoreboard.textContent = +splitStr[0] - +splitStr[1];
+            scoreboard.textContent = +firstOperand - +secondOperand;
             break;
         case '×':
-            scoreboard.textContent = +splitStr[0] * +splitStr[1];
+            scoreboard.textContent = +firstOperand * +secondOperand;
             break;
         case '÷':
-            scoreboard.textContent = +splitStr[0] / +splitStr[1];
+            scoreboard.textContent = +firstOperand / +secondOperand;
             break;
     }
     mathAction = null
