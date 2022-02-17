@@ -36,8 +36,7 @@ function mathematicAction() {
 
 function backspaceScore() {
     const lengthScore = scoreboard.textContent.length
-
-    if (lengthScore === 1) {
+    if (lengthScore === 1 || (+res < 0 && lengthScore === 2)) {
         scoreboard.textContent = '0'
     } else {
         scoreboard.textContent = scoreboard.textContent.slice(0, lengthScore - 1)
@@ -48,23 +47,24 @@ function resetScore() {
     scoreboard.textContent = '0'
 }
 
-
+let res
 function getResult() {
     let secondOperand = scoreboard.textContent
 
     switch (mathAction) {
         case '+':
-            scoreboard.textContent = +firstOperand + +secondOperand;
+            res = +firstOperand + +secondOperand;
             break;
         case '–':
-            scoreboard.textContent = +firstOperand - +secondOperand;
+            res = +firstOperand - +secondOperand;
             break;
         case '×':
-            scoreboard.textContent = +firstOperand * +secondOperand;
+            res = +firstOperand * +secondOperand;
             break;
         case '÷':
-            scoreboard.textContent = +firstOperand / +secondOperand;
+            res = +firstOperand / +secondOperand;
             break;
     }
+    scoreboard.textContent = res
     mathAction = null
 }
