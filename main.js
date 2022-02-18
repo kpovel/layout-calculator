@@ -19,15 +19,18 @@ reset.addEventListener('click', resetScore)
 
 function numberEntry() {
     const text = scoreboard.textContent
+
     if (text[0] === '0' && text.length === 1) {
         scoreboard.textContent = null
-    }else if (firstOperand){
-        scoreboard.textContent = null
+    } else if (mathAction && firstOperand && !secondOperand) {
+        secondOperand = this.textContent
+        return scoreboard.textContent = secondOperand
     }
     scoreboard.textContent += this.textContent
 }
 
 let firstOperand
+
 function mathematicAction() {
     firstOperand = scoreboard.textContent
     mathAction = this.textContent
@@ -48,8 +51,10 @@ function resetScore() {
 }
 
 let res
+let secondOperand
+
 function getResult() {
-    let secondOperand = scoreboard.textContent
+    secondOperand = scoreboard.textContent
 
     switch (mathAction) {
         case '+':
@@ -67,4 +72,6 @@ function getResult() {
     }
     scoreboard.textContent = res
     mathAction = null
+    secondOperand = null
+    firstOperand = res
 }
