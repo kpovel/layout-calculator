@@ -1,6 +1,10 @@
 const numbersButton = document.querySelectorAll('.inputScore')
 const mathActions = document.querySelectorAll('button.action')
+const defaultValue = '0'
 let mathAction
+let firstOperand
+let secondOperand
+let result
 
 for (let numbers of numbersButton) {
     numbers.addEventListener('click', numberEntry)
@@ -12,7 +16,7 @@ for (let mathActionElement of mathActions) {
 
 backspace.addEventListener('click', backspaceScore)
 
-result.addEventListener('click', getResult)
+equals.addEventListener('click', getResult)
 
 reset.addEventListener('click', resetScore)
 
@@ -20,7 +24,7 @@ reset.addEventListener('click', resetScore)
 function numberEntry() {
     const text = scoreboard.textContent
 
-    if (text[0] === '0' && text.length === 1) {
+    if (text[0] === defaultValue && text.length === 1) {
         scoreboard.textContent = null
     } else if (mathAction && firstOperand && !secondOperand) {
         secondOperand = this.textContent
@@ -29,7 +33,6 @@ function numberEntry() {
     scoreboard.textContent += this.textContent
 }
 
-let firstOperand
 
 function mathematicAction() {
     firstOperand = scoreboard.textContent
@@ -39,39 +42,43 @@ function mathematicAction() {
 
 function backspaceScore() {
     const lengthScore = scoreboard.textContent.length
-    if (lengthScore === 1 || (+res < 0 && lengthScore === 2)) {
-        scoreboard.textContent = '0'
+
+    if ((lengthScore === 1) || (Number(result) < 0 && lengthScore === 2)) {
+        scoreboard.textContent = defaultValue
     } else {
         scoreboard.textContent = scoreboard.textContent.slice(0, lengthScore - 1)
     }
 }
 
 function resetScore() {
-    scoreboard.textContent = '0'
+    scoreboard.textContent = defaultValue
 }
-
-let res
-let secondOperand
 
 function getResult() {
     secondOperand = scoreboard.textContent
+    console.log(secondOperand)
+    const isNotValid = (firstOperand === defaultValue) || !secondOperand || !mathAction
+    if (isNotValid) return
 
     switch (mathAction) {
         case '+':
-            res = +firstOperand + +secondOperand;
+            result = +firstOperand + +secondOperand;
             break;
         case '–':
-            res = +firstOperand - +secondOperand;
+            result = +firstOperand - +secondOperand;
             break;
         case '×':
-            res = +firstOperand * +secondOperand;
+            result = +firstOperand * +secondOperand;
             break;
         case '÷':
-            res = +firstOperand / +secondOperand;
+            result = +firstOperand / +secondOperand;
             break;
+        default:
+            scoreboard.textContent = defaultValue
     }
-    scoreboard.textContent = res
+
+    scoreboard.textContent = result
     mathAction = null
     secondOperand = null
-    firstOperand = res
+    firstOperand = result
 }
