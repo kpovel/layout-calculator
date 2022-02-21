@@ -1,5 +1,5 @@
-const numbersButton = document.querySelectorAll('.inputScore')
-const mathActions = document.querySelectorAll('button.action')
+import {numbersButton, mathActions} from "./view.js";
+
 const defaultValue = '0'
 let mathAction
 let firstOperand
